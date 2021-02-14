@@ -58,9 +58,10 @@ app.get('/weather', (req, res) => {
                 return res.send({error})
             }
             res.send({
-                forecast: forecastData,
+                forecast: forecastData.currentForecast,
                 location: body.location,
-                address: req.query.address
+                address: req.query.address,
+                weatherIcon: forecastData.weatherIconPath
             })
         })
     })
@@ -95,5 +96,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Server is up on port' + port)
+    console.log('Server is up on port ' + port)
 })
